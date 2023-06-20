@@ -83,20 +83,6 @@ def make_PL_obj(url):
   return pl_obj
 
 
-def walk_recursive_data(rdata):
-
-  if isinstance(rdata,list) or isinstance(rdata,tuple):
-    for i in rdata:
-      walk_recursive_data(i)
-  elif isinstance(rdata,dict):
-    for k,v in rdata.items():
-      walk_recursive_data((k,v))
-  else:
-    WriteLogArgs(f'{LF} type: {rdata}')
-
-
-
-
 def download_YT_file(url, yt_type='mp3'):
 
 
@@ -184,8 +170,6 @@ def input_loop():
 
         _title = plobj.title
         WriteLogArgs(f'{LF} title: {_title}')
-        #_sidebar_info = plobj.sidebar_info
-        #walk_recursive_data(_sidebar_info)
 
         for url in plobj:
           download_YT_file(url, yt_type=yt_out_type)
